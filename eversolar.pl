@@ -1088,7 +1088,7 @@ while (42) {
                 $inverters{$inverter}{"daily_retrieved"} = 1;
             }
             
-            $d365 = $e_total - $inverters{$inverter}{"daily_retrieved_value"};
+            $d365 = sprintf("%.1f", $e_total - $inverters{$inverter}{"daily_retrieved_value"});
             
             pmu_log("Severity 3, " . $inverters{$inverter}{"serial"} . " output: $pac W, Total: $e_total kWh, Today: $e_today_kwh kWh, 365 days : $d365 " );
 
