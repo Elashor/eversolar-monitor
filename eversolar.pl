@@ -1297,7 +1297,7 @@ while (42) {
                    pac => $inverters{$inverter}{'data'}{'pac'},
                    max_power_today => $inverters{$inverter}{'max'}{'pac'}{'watts'},
                    d365 => $inverters{$inverter}{'data'}{'d365'},
-                   total_daykwh => $inverters{$inverter}{'data'}{'total_daykwh'},
+                   total_daykwh => $inverters{$inverter}{'data'}{'e_today'},
                    e_total => $inverters{$inverter}{'data'}{'e_total'},
                    temp => $inverters{$inverter}{'data'}{'temp'},
                    impedance => $inverters{$inverter}{'data'}{'impedance'},
@@ -1354,6 +1354,7 @@ while (42) {
                            $config_data{'name'} = "PV Total Energy Today";
                            $config_data{'unit_of_measurement'} = "kWh";
                            $config_data{'device_class'} = "energy";
+                           $config_data{"state_class"} = "total_increasing";
 
                        } elsif ( $_[0] eq "e_total" ){
                            $config_data{'icon'} = "mdi:solar-power";
@@ -1365,8 +1366,7 @@ while (42) {
                        } elsif ( $_[0] eq "temp" ){
                            $config_data{'icon'} = "mdi:temperature-celsius";
                            $config_data{'name'} = "PV Inverter Temperature";
-                           binmode(STDOUT, ":utf8");
-                           $config_data{'unit_of_measurement'} = "<C2><B0>C";
+                           $config_data{'unit_of_measurement'} = "°C";
                            $config_data{'device_class'} = "temperature";
                            $config_data{'state_class'} = "measurement";
 
